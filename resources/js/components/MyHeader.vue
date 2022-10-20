@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li v-for="(item, index) in menuItems" class="nav-item" :key="index">
-                        <a class="nav-link" :href="item.link">{{item.label}}</a>
+                        <router-link class="nav-link" :to="{name: item.routeName}">{{item.label}}</router-link>
                     </li>
                 </ul>
             </div>
@@ -25,19 +25,19 @@ export default {
                 menuItems: [
                     {
                         label: 'Home',
-                        link: '#'
+                        routeName: 'home'
                     },
                     {
                         label: 'Blog',
-                        link: '#'
+                        routeName: '#'
                     },
                     {
                         label: 'About Us',
-                        link: '#'
+                        routeName: 'AboutUs'
                     },
                     {
                         label: 'Contact',
-                        link: '#'
+                        routeName: 'contact'
                     }
                 ]
             }

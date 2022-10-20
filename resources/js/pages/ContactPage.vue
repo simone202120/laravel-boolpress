@@ -1,17 +1,13 @@
 <template>
     <div class="container">
-        <router-vue></router-vue>
+        <h1>Contattaci per info</h1>
     </div>
-  
 </template>
 
 <script>
-
-
 export default {
-    name: 'MyMain',
+    name: 'contact'
 }
-
 </script>
 
 <style>
