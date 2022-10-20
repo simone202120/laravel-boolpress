@@ -6,29 +6,13 @@
             </div>
         </div>
 
-        <div v-else class="card text-center mt-5" v-for="(post, index) in posts" :key="index">
-            <div class="card-header">
-                <H5>TITOLO</H5>
-                <H5>{{post.title}}</H5>
-            </div>
-            <div v-if="loading">
-                <div class="spinner-border text-warning" role="status">
-                 <span class="sr-only">Loading...</span>
-                </div>
-            </div>
-            <div class="card-body">
-                <p class="card-text">{{trocatetext(post.content, 50)}}</p>
-                <P>CATEGORY:{{post.category.name}}</P>
-                <a href="#" class="btn btn-primary">Leggi articolo</a>
-            </div>
-            <div class="card-footer text-muted">
-                {{post.updated_at}}
-            </div>
-        </div>
+        <Mypost v-for="(post, index) in posts" :key="index" :post="post">
+           
+        </Mypost>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#" @click="getposts(currentPage - 1)">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#" @click="getposts(currentPage + 1)">Next</a></li>
+                <li class="page-item"><a class="page-link"  @click="getposts(currentPage - 1)">Previous</a></li>
+                <li class="page-item"><a class="page-link"  @click="getposts(currentPage + 1)">Next</a></li>
             </ul>
         </nav>
     </div>
@@ -37,9 +21,14 @@
 
 <script>
 import Axios from 'axios';
+import Mypost from '../components/Mypost.vue'
 
 export default {
-    name: 'MyMain',
+    name: 'Blog',
+
+    components:{
+        Mypost
+    },
     data() {
         return {
             posts:[],
@@ -65,16 +54,6 @@ export default {
 
             });
         },
-
-        trocatetext(text, maxlength){
-
-            if (text.length < maxlength) {
-                return text;
-            } else {
-                return text.substring(0,maxlength) + '...';
-            }
-            
-        }
     },
     mounted(){
             this.getposts(1);
